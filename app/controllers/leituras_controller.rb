@@ -1,5 +1,8 @@
 class LeiturasController < ApplicationController
   before_action :set_leitura, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
+  protect_from_forgery with: :exception  
+  protect_from_forgery unless: -> { request.format.json? }  
 
   # GET /leituras or /leituras.json
   def index
@@ -21,6 +24,7 @@ class LeiturasController < ApplicationController
 
   # POST /leituras or /leituras.json
   def create
+    releaseCrossDomain
     @leitura = Leitura.new(leitura_params)
 
     respond_to do |format|
@@ -66,4 +70,23 @@ class LeiturasController < ApplicationController
     def leitura_params
       params.require(:leitura).permit(:valor, :sensor_id)
     end
+
+    def releaseCrossDomain
+
+      origin = request.headers["Origin"]
+  
+      if (not origin.nil?) and (origin == "https://ib.ampmsolucoes.com.br" or origin == "https://api.ampmsolucoes.com.br" or origin == "192.168.15.10")
+        origin = origin
+        else
+          origin = ""
+      end
+      
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'GET, POST'
+      headers['Access-Control-Request-Method'] = '*'
+      headers['Access-Control-Allow-Headers'] = '*'
+    end
+  
+
+
 end
