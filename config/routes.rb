@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   get 'home', to: 'home#index'
-  post 'api', to: 'sensors#create'
+  post 'api', to: 'leituras#create'
   get 'api', to: 'leituras#create'
 
 end
