@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TESTE 5</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p><font size="6" color="gray">ÁREA DO ADMINISTRADOR</font></p>
+    <div class="topnav">
+      <a class=active href="/">Home</a>
+      <a href="/clientes">Clientes</a>
+      <a href="/usuarios">Usuários</a>
+      <a href="/tipo_sensors">Tipo de Sensores</a>
+      <a href="/sensors">Listagem de Sensores</a>
+      <a href="/leituras">Valores das Leituras</a>
+      <a href="/administradors">Administradores</a>
+      <a href="/login/sair">Sair</a>
+    </div>
+    <%= yield %>
+  </body>
+</html>

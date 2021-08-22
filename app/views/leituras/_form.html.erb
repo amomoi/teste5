@@ -1,0 +1,27 @@
+<%= form_with(model: leitura) do |form| %>
+  <% if leitura.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leitura.errors.count, "error") %> prohibited this leitura from being saved:</h2>
+
+      <ul>
+        <% leitura.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :valor %>
+    <%= form.text_field :valor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sensor_id %>
+    <%= form.text_field :sensor_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<%= form_with(model: tipo_sensor) do |form| %>
+  <% if tipo_sensor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tipo_sensor.errors.count, "error") %> prohibited this tipo_sensor from being saved:</h2>
+
+      <ul>
+        <% tipo_sensor.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tipo_sensor %>
+    <%= form.text_field :tipo_sensor %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

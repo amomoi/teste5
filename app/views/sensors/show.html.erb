@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome sensor:</strong>
+  <%= @sensor.nome_sensor %>
+</p>
+
+<p>
+  <strong>Cliente:</strong>
+  <%= @sensor.cliente.nome_empresa%>
+</p>
+
+<p>
+  <strong>Tipo sensor:</strong>
+  <%= @sensor.tipo_sensor.tipo_sensor %>
+</p>
+
+<%= link_to 'Edit', edit_cliente_sensor_path(@cliente, @sensor) %> |
+<%= link_to 'Back', cliente_sensors_path(@cliente) %>

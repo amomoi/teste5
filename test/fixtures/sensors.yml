@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_sensor: MyString
+  cliente: one
+  tipo_sensor: one
+
+two:
+  nome_sensor: MyString
+  cliente: two
+  tipo_sensor: two
