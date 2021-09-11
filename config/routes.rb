@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   post 'api', to: 'leituras#create'
   get 'api', to: 'leituras#create'
+  get 'ultima_leitura', to: 'leituras#ul'
 
 end

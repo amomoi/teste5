@@ -10,5 +10,10 @@
   <%= @leitura.sensor_id %>
 </p>
 
+<p>
+  <strong>Data e hora:</strong>
+  <%= @leitura.created_at %>
+</p>
+
 <%= link_to 'Edit', edit_leitura_path(@leitura) %> |
 <%= link_to 'Back', leituras_path %>

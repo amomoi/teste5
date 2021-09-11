@@ -60,6 +60,23 @@ class LeiturasController < ApplicationController
     end
   end
 
+  #ação criada para enviar a última leitura na página de controle de sensores  
+  def ul
+    releaseCrossDomain
+    @leitura = Leitura.last
+    respond_to do |format|
+      if @leitura.save
+        format.html { redirect_to @leitura, notice: "Leitura was successfully created." }
+        format.json { render :show, status: :created, location: @leitura }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @leitura.errors, status: :unprocessable_entity }
+      end
+    end
+  
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_leitura
