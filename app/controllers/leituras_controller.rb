@@ -66,7 +66,7 @@ class LeiturasController < ApplicationController
     @leitura = Leitura.last
     respond_to do |format|
       if @leitura.save
-        format.html { redirect_to @leitura, notice: "Leitura was successfully created." }
+        format.html { render :show, notice: "Leitura was successfully created." }
         format.json { render :show, status: :created, location: @leitura }
       else
         format.html { render :new, status: :unprocessable_entity }
