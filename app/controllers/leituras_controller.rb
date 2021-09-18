@@ -7,6 +7,7 @@ class LeiturasController < ApplicationController
 
   # GET /leituras or /leituras.json
   def index
+    releaseCrossDomain
     if @sensor == Sensor.all      
         @leituras = Leitura.all
     else 
