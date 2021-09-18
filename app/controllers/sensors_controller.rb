@@ -1,6 +1,7 @@
 class SensorsController < ApplicationController
   before_action :set_sensor, only: %i[ show edit update destroy]
   before_action :set_cliente
+  skip_before_action :verify_authenticity_token
 
   # GET /sensors or /sensors.json
   def index
@@ -81,4 +82,21 @@ class SensorsController < ApplicationController
     def sensor_params
       params.require(:sensor).permit(:nome_sensor, :cliente_id, :tipo_sensor_id)
     end
+
+    def releaseCrossDomain
+
+      origin = request.headers["Origin"]
+  
+      if (not origin.nil?) and (origin == "https://ib.ampmsolucoes.com.br" or origin == "https://api.ampmsolucoes.com.br" or origin == "192.168.15.10")
+        origin = origin
+        else
+          origin = ""
+      end
+      
+      headers['Access-Control-Allow-Origin'] = '*'
+      headers['Access-Control-Allow-Methods'] = 'GET, POST'
+      headers['Access-Control-Request-Method'] = '*'
+      headers['Access-Control-Allow-Headers'] = '*'
+    end
+
 end
