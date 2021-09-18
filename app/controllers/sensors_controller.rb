@@ -5,6 +5,7 @@ class SensorsController < ApplicationController
 
   # GET /sensors or /sensors.json
   def index
+    releaseCrossDomain
     if @cliente == Cliente.all
       @sensors = Sensor.all
     else
