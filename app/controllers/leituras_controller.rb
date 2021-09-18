@@ -3,10 +3,16 @@ class LeiturasController < ApplicationController
   skip_before_action :verify_authenticity_token
   protect_from_forgery with: :exception  
   protect_from_forgery unless: -> { request.format.json? }  
+  before_action :set_sensor
 
   # GET /leituras or /leituras.json
   def index
-    @leituras = Leitura.all
+    if @sensor == Sensor.all      
+        @leituras = Leitura.all
+    else 
+      @leituras = Leitura.where(sensor_id: @sensor.id)
+    end
+    
   end
 
   # GET /leituras/1 or /leituras/1.json
@@ -64,14 +70,9 @@ class LeiturasController < ApplicationController
   def ul
     releaseCrossDomain
     @leitura = Leitura.last
-    respond_to do |format|
-      if @leitura.save
+    respond_to do |format|      
         format.html { render :show, notice: "Leitura was successfully created." }
-        format.json { render :show, status: :created, location: @leitura }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @leitura.errors, status: :unprocessable_entity }
-      end
+        format.json { render :show, status: :created, location: @leitura }      
     end
   
     
@@ -79,13 +80,21 @@ class LeiturasController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def set_sensor
+      @sensor = Sensor.where(id: params[:sensor_id]).first
+      if @sensor.nil?
+        @sensor = Sensor.all
+      end
+    end
+
     def set_leitura
       @leitura = Leitura.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def leitura_params
-      params.require(:leitura).permit(:valor, :sensor_id)
+      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id)
     end
 
     def releaseCrossDomain

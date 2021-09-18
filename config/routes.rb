@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :sensors
   
   resources :clientes do
-    resources :sensors
+    resources :sensors do
+      resources :leituras
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

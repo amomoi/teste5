@@ -1,5 +1,5 @@
 class SensorsController < ApplicationController
-  before_action :set_sensor, only: %i[ show edit update destroy ]
+  before_action :set_sensor, only: %i[ show edit update destroy]
   before_action :set_cliente
 
   # GET /sensors or /sensors.json

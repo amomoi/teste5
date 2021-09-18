@@ -20,7 +20,7 @@
         <td><%= sensor.nome_sensor %></td>
         <td><%= sensor.cliente.nome_empresa %></td>
         <td><%= sensor.tipo_sensor.tipo_sensor %></td>
-        <td><%= link_to 'Leituras', cliente_sensors_path(sensor) %></td>
+        <td><%= link_to 'Leituras', cliente_sensor_leituras_path(@cliente, sensor) %></td>
         <td><%= link_to 'Show', cliente_sensor_path(@cliente, sensor) %></td>
         <td><%= link_to 'Edit', edit_cliente_sensor_path(@cliente, sensor) %></td>
         <td><%= link_to 'Destroy', cliente_sensor_path(@cliente, sensor), method: :delete, data: { confirm: 'Are you sure?' } %></td>
