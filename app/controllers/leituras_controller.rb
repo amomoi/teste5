@@ -12,6 +12,8 @@ class LeiturasController < ApplicationController
         @leituras = Leitura.all
     else 
       @leituras = Leitura.where(sensor_id: @sensor.id)
+                          .where(created_at: (Time.now.midnight - 7.day)..Time.now)
+
     end
     
   end
