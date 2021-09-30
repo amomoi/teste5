@@ -32,6 +32,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :SMS %>
+    <%= form.text_field :sms %>
+  </div>
+
+  <div class="field">
     <%= form.label :cliente_id %>
     <!-- <%= form.text_field :cliente_id %> -->
     <%= form.select :cliente_id, Cliente.all.collect {|c| [c.nome_empresa, c.id]}, include_blank: true %>

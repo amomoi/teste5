@@ -81,7 +81,7 @@ class SensorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sensor_params
-      params.require(:sensor).permit(:nome_sensor, :cliente_id, :tipo_sensor_id)
+      params.require(:sensor).permit(:nome_sensor, :Li, :Ls, :cliente_id, :tipo_sensor_id)
     end
 
     def releaseCrossDomain

@@ -7,6 +7,8 @@
     <tr>
       <th>ID Sensor</th>
       <th>Nome sensor</th>
+      <th>LI</th>
+      <th>LS</th>
       <th>Cliente</th>
       <th>Tipo sensor</th>
       <th colspan="3"></th>
@@ -18,6 +20,8 @@
       <tr>
         <td><%= sensor.id %></td>
         <td><%= sensor.nome_sensor %></td>
+        <td><%= sensor.Li %></td>
+        <td><%= sensor.Ls %></td>
         <td><%= sensor.cliente.nome_empresa %></td>
         <td><%= sensor.tipo_sensor.tipo_sensor %></td>
         <td><%= link_to 'Leituras', cliente_sensor_leituras_path(@cliente, sensor) %></td>

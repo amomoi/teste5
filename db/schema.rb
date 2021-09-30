@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_183247) do
+ActiveRecord::Schema.define(version: 2021_09_30_205424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2021_09_30_183247) do
     t.bigint "tipo_sensor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "Li"
+    t.float "Ls"
     t.index ["cliente_id"], name: "index_sensors_on_cliente_id"
     t.index ["tipo_sensor_id"], name: "index_sensors_on_tipo_sensor_id"
   end
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_09_30_183247) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "celular"
+    t.integer "sms"
     t.index ["cliente_id"], name: "index_usuarios_on_cliente_id"
   end
 
