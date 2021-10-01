@@ -1,0 +1,27 @@
+<%= form_with(model: status) do |form| %>
+  <% if status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(status.errors.count, "error") %> prohibited this status from being saved:</h2>
+
+      <ul>
+        <% status.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :flag %>
+    <%= form.number_field :flag %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sensor_id %>
+    <%= form.text_field :sensor_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

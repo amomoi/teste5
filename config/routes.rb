@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :statuses
   resources :leituras
   resources :usuarios
   resources :tipo_sensors
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
   
   resources :clientes do
     resources :sensors do
+      resources :statuses
       resources :leituras
     end
   end

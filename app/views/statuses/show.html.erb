@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Flag:</strong>
+  <%= @status.flag %>
+</p>
+
+<p>
+  <strong>Sensor:</strong>
+  <%= @status.sensor_id %>
+</p>
+
+<%= link_to 'Edit', edit_status_path(@status) %> |
+<%= link_to 'Back', statuses_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_30_205424) do
+ActiveRecord::Schema.define(version: 2021_09_30_220801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 2021_09_30_205424) do
     t.index ["tipo_sensor_id"], name: "index_sensors_on_tipo_sensor_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.integer "flag"
+    t.bigint "sensor_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sensor_id"], name: "index_statuses_on_sensor_id"
+  end
+
   create_table "tipo_sensors", force: :cascade do |t|
     t.string "tipo_sensor"
     t.datetime "created_at", precision: 6, null: false
@@ -62,5 +70,6 @@ ActiveRecord::Schema.define(version: 2021_09_30_205424) do
   add_foreign_key "leituras", "sensors"
   add_foreign_key "sensors", "clientes"
   add_foreign_key "sensors", "tipo_sensors"
+  add_foreign_key "statuses", "sensors"
   add_foreign_key "usuarios", "clientes"
 end

@@ -13,6 +13,7 @@ class LeiturasController < ApplicationController
     else 
       @leituras = Leitura.where(sensor_id: @sensor.id)
                           .where(created_at: (Time.now.midnight - 6.day)..Time.now)
+                          .order('id ASC')
     end
     
   end
