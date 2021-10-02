@@ -7,6 +7,11 @@ class StatusesController < ApplicationController
   # GET /statuses or /statuses.json
   def index
     @statuses = Status.all
+    if @sensor == Sensor.all      
+      @statuses = Status.all
+    else 
+      @statuses = Status.where(sensor_id: @sensor.id)
+    end
   end
 
   # GET /statuses/1 or /statuses/1.json
@@ -67,7 +72,7 @@ class StatusesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def status_params
-      params.require(:status).permit(:flag, :sensor_id, :cliente_id, :tipo_sensor_id)
+      params.require(:status).permit(:flag, :sensor_id, :cliente_id, :tipo_sensor_id, :nome_sensor)
     end
 
     def set_sensor

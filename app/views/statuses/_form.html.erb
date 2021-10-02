@@ -19,6 +19,7 @@
   <div class="field">
     <%= form.label :sensor_id %>
     <%= form.text_field :sensor_id %>
+    <!-- <%= form.select :sensor_id, Sensor.all.collect {|s| [s.nome_sensor, s.id]}, include_blank: true %> -->
   </div>
 
   <div class="actions">

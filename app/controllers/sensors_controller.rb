@@ -29,8 +29,7 @@ class SensorsController < ApplicationController
   # POST /sensors or /sensors.json
   def create
     @sensor = Sensor.new(sensor_params)
-    #@sensor.cliente = @cliente
-
+    
     respond_to do |format|
       if @sensor.save
         format.html { redirect_to cliente_sensors_path(@cliente), notice: "Sensor was successfully created." }
