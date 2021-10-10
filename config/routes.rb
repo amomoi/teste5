@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   post 'api', to: 'leituras#create'
   get 'api', to: 'leituras#create'
   get 'ultima_leitura', to: 'leituras#ul'
+  get 'sms', to: 'sms#index'
 
 end

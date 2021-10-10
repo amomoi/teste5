@@ -6,7 +6,8 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Flag</th>
+      <th>Flag_notificação</th>
+      <th>Flag_rearme</th>
       <th>Sensor ID</th>
       <th>Nome do Sensor</th>
       <th>Cliente</th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= status.id %></td>
         <td><%= status.flag %></td>
+        <td><%= status.flag_rearme %></td>
         <td><%= status.sensor_id %></td>
         <td><%= status.sensor.nome_sensor %></td>
         <td><%= status.sensor.cliente.nome_empresa %></td>

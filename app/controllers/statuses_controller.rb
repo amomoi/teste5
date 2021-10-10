@@ -72,7 +72,7 @@ class StatusesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def status_params
-      params.require(:status).permit(:flag, :sensor_id, :cliente_id, :tipo_sensor_id, :nome_sensor)
+      params.require(:status).permit(:flag, :flag_rearme, :sensor_id, :cliente_id, :tipo_sensor_id, :nome_sensor)
     end
 
     def set_sensor
