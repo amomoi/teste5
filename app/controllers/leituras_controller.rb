@@ -72,13 +72,12 @@ class LeiturasController < ApplicationController
   #ação criada para enviar a última leitura na página de controle de sensores  
   def ul
     releaseCrossDomain
-    @leitura = Leitura.last
+    @leitura = Leitura.where(sensor_id: params[:id_sensor]).last
     respond_to do |format|      
         format.html { render :show, notice: "Leitura was successfully created." }
         format.json { render :show, status: :created, location: @leitura }      
-    end
-  
-    
+    end   
+
   end
 
   private
