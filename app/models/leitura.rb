@@ -5,7 +5,8 @@ class Leitura < ApplicationRecord
     after_save :check_status
 
     def check_status
-      values = ActiveRecord::Base.connection.exec_query("select * from clientes")
-      p values
+      id_sensor = ActiveRecord::Base.connection.exec_query("select * from clientes")
+      p id_sensor
+
     end
   end

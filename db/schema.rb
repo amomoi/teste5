@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_14_214616) do
+ActiveRecord::Schema.define(version: 2021_10_25_210401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,8 +47,7 @@ ActiveRecord::Schema.define(version: 2021_10_14_214616) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "flag_rearme"
-    t.string "flag_mantec"
-    t.string "integer"
+    t.integer "flag_mantec"
     t.index ["sensor_id"], name: "index_statuses_on_sensor_id"
   end
 

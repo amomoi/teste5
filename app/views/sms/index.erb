@@ -1,60 +1,29 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 
 <head>
-
     <title>Envio de SMS - Teste</title>
-
     <meta charset="utf-8">
-
 </head>
 
-
-
-
-
 <body>
-
-
-
     <h1>ENVIO DE SMS - Teste</h1>
-
     <button type="submit" onclick="enviarSMS()">ENVIAR SMS</button>
-
-
-
     <script>
         function enviarSMS() {
-
-
-
             let data = {
-
                 "smss": [
-
                     {
-
                         "numero": "12997695483",
-
                         "idCustom": "1",
-
                         "mensagem": "Envio teste de SMS para Mainha - envia zap que recebeu este SMS"
-
                     },
-
                     // {
-
                     //    "numero": "11995672927",
-
                     //     "idCustom": "2",
-
                     //    "mensagem": "Envio teste 2 de SMS para Paty"
-
                     // },
-
                 ],
-
                 "envioImediato": true,
                 "centroCusto": "6141f787b62e99838c27e9dd",
             };
@@ -62,37 +31,21 @@
             console.log(data)
 
             fetch('https://v2.bestuse.com.br/api/v1/envioApi?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImFtcG0iLCJfaWQiOiI2MTQxZjc4N2I2MmU5OTgzOGMyN2U5ZGQiLCJjbGllbnRlIjoiNjE0MWY3NjBiNjJlOTk4MzhjMjdlOWNmIiwic2FsZG8iOjE1LCJieUNDIjp0cnVlLCJpYXQiOjE2MzE3MjAzMjR9.3v4zB9VN4U18yf2syyH5djYnf_drkTViTfOV4EdSYcQ', {
-
                     method: "POST",
-
                     //mode: 'no-cors',
-
                     body: JSON.stringify(data),
-
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                         },
-
                 })
 
                 // Converting to JSON
-
                 //.then(response => response.json())
-
-
-
                 // Displaying results to console
-
                 .then(json => console.log(json));
-
-
-
         }
     </script>
-
-
-
 </body>
 
 </html>
