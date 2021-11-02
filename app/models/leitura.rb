@@ -104,4 +104,4 @@ class Leitura < ApplicationRecord
   #   #             # Displaying results to console
   #   #             #.then(json => console.log(json));
   #   #              %>
-  # end
+ end
