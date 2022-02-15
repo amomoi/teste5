@@ -5,6 +5,7 @@ class LeiturasController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }  
   before_action :set_sensor
 
+
   # GET /leituras or /leituras.json
   def index
     releaseCrossDomain
@@ -80,6 +81,48 @@ class LeiturasController < ApplicationController
 
   end
 
+  #require 'rest-client'
+  require 'json'
+  require 'uri'
+  require 'net/http'
+
+  def self.enviarSMS(numero_celular, numero_cliente, empresa, usuario, sensor)
+
+     p "Enviou SMS para"
+     p numero_celular
+     p numero_cliente
+   
+      data = {
+                "smss": [
+                    {
+                        "numero": numero_celular,
+                        "idCustom": numero_cliente,
+                        "mensagem": "#{empresa} - #{usuario}: Sensor #{sensor} foi ativado #{Time.now.strftime("%I:%M%p - %d/%m/%Y")}  pois atingiu o limite! Favor verificar!"
+                    },
+                    
+                    #// {
+                    #// "numero": "11995672927",
+                    #//     "idCustom": "2",
+                    #// "mensagem": "Envio teste via RoR"
+                    #// },
+                ],
+                "envioImediato": true,
+                "centroCusto": "6141f787b62e99838c27e9dd",
+              }
+
+             
+    url = URI("http://v2.bestuse.com.br/api/v1/envioApi?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImFtcG0iLCJfaWQiOiI2MTQxZjc4N2I2MmU5OTgzOGMyN2U5ZGQiLCJjbGllbnRlIjoiNjE0MWY3NjBiNjJlOTk4MzhjMjdlOWNmIiwic2FsZG8iOjYsImJ5Q0MiOnRydWUsImlhdCI6MTY0MzAzMDg4NX0.-3WC5nyW9z0JLKfchEKi3aT4Pf2mlTMKHDw6F9Z6Ges")
+    http = Net::HTTP.new(url.host, url.port)
+
+    request = Net::HTTP::Post.new(url)
+    request["Content-Type"] = 'application/json'
+    request["Authorization"] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImFtcG0iLCJfaWQiOiI2MTQxZjc4N2I2MmU5OTgzOGMyN2U5ZGQiLCJjbGllbnRlIjoiNjE0MWY3NjBiNjJlOTk4MzhjMjdlOWNmIiwic2FsZG8iOjYsImJ5Q0MiOnRydWUsImlhdCI6MTY0MzAzMDg4NX0.-3WC5nyW9z0JLKfchEKi3aT4Pf2mlTMKHDw6F9Z6Ges'
+    request.body = data.to_json
+    response = http.request(request)
+    #puts response.read_body
+    #p response           
+  
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -97,7 +140,7 @@ class LeiturasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def leitura_params
-      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id)
+      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id, :created_at)
     end
 
     def releaseCrossDomain
