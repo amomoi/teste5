@@ -20,7 +20,7 @@ class Leitura < ApplicationRecord
     #end
 
     valor_anterior = Leitura.where("sensor_id = ?", sensor_id).select(:valor).last
-      if valor_anterior == 'nil'
+      if valor_anterior.nil? #= 'nil'
         valor_anterior = limite_inferior[0] + 1
       else 
         p "valor anterior"
@@ -31,7 +31,7 @@ class Leitura < ApplicationRecord
       end
       
     flag_notificacao = Status.where("sensor_id = ?", sensor_id).select(:flag).last
-      if flag_notificacao == 'nil'
+      if flag_notificacao.nil?
         flag_notificacao = 0
       else 
         p "flag notificação"
@@ -39,7 +39,7 @@ class Leitura < ApplicationRecord
       end
 
     flag_rearme = Status.where("sensor_id = ?", sensor_id).select(:flag_rearme).last
-      if flag_rearme == 'nil'
+      if flag_rearme.nil?
         flag_rearme = 0
       else 
         p "flag rearme"
@@ -47,7 +47,7 @@ class Leitura < ApplicationRecord
       end
 
     flag_mantec = Status.where("sensor_id = ?", sensor_id).select(:flag_mantec).last
-      if flag_mantec == 'nil'
+      if flag_mantec.nil?
         flag_mantec = 0
       else 
         p "flag mantec"
@@ -57,7 +57,7 @@ class Leitura < ApplicationRecord
 
     #LÓGICA PARA SENSORES COM LI
     if flag_mantec = 0
-        if valor <= limite_inferior[0]
+        if valor <= limite_inferior[0] #checa se atingiu o valor limite (superior ou inferior)
           cliente = Sensor.where("id = ?", sensor_id).select(:cliente_id).pluck(:cliente_id)
           p cliente[0]
           nome_da_empresa = Cliente.where("id = ?", cliente[0]).select(:nome_empresa).pluck(:nome_empresa)
