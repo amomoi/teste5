@@ -57,6 +57,7 @@ class Leitura < ApplicationRecord
 
     #LÓGICA PARA SENSORES COM LI
     if flag_mantec = 0
+      if !limite_inferior[0].nil?
         if valor <= limite_inferior[0] #checa se atingiu o valor limite (superior ou inferior)
           cliente = Sensor.where("id = ?", sensor_id).select(:cliente_id).pluck(:cliente_id)
           p cliente[0]
@@ -76,6 +77,7 @@ class Leitura < ApplicationRecord
             end
           end
         end
+      end
     else #flag_mantec = 1
       flag_notificacao = 0
       flag_rearme = 0
