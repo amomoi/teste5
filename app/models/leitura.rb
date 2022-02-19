@@ -77,6 +77,7 @@ class Leitura < ApplicationRecord
             end
           end
         end
+      else
       end
     else #flag_mantec = 1
       flag_notificacao = 0
