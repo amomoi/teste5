@@ -154,7 +154,7 @@ class LeiturasController < ApplicationController
       end
       
       headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = '*' #'GET, POST'
+      headers['Access-Control-Allow-Methods'] = 'GET, POST'
       headers['Access-Control-Request-Method'] = '*'
       headers['Access-Control-Allow-Headers'] = '*'
     end
