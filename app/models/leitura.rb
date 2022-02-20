@@ -1,6 +1,7 @@
 class Leitura < ApplicationRecord
   belongs_to :sensor
 
+  validates :limite_inferior, :limite_superior, allow_nil: true
 
   before_save :check_status
 
