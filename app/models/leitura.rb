@@ -16,6 +16,7 @@ class Leitura < ApplicationRecord
         p "LI"
         p limite_inferior[0]
       else
+        limite_inferior = ""
       end
 
     limite_superior = Sensor.where("id = ?", sensor_id).select(:Ls).pluck(:Ls)
