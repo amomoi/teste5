@@ -140,7 +140,7 @@ class LeiturasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def leitura_params
-      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id, :created_at, :Li, :Ls)
+      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id, :created_at)
     end
 
     def releaseCrossDomain
@@ -154,7 +154,7 @@ class LeiturasController < ApplicationController
       end
       
       headers['Access-Control-Allow-Origin'] = '*'
-      headers['Access-Control-Allow-Methods'] = 'GET, POST'
+      headers['Access-Control-Allow-Methods'] = '*' #'GET, POST'
       headers['Access-Control-Request-Method'] = '*'
       headers['Access-Control-Allow-Headers'] = '*'
     end
