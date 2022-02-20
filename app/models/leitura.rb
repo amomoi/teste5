@@ -7,6 +7,7 @@ class Leitura < ApplicationRecord
   def check_status
           
     limite_inferior = Sensor.where("id = ?", sensor_id).select(:Li).pluck(:Li)
+    p limite_inferior[0]
       if !limite_inferior[0].nil?
         p "valor da VARIÁVEL"
         p "LI"
