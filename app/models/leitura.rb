@@ -7,17 +7,19 @@ class Leitura < ApplicationRecord
   def check_status
           
     limite_inferior = Sensor.where("id = ?", sensor_id).select(:Li).pluck(:Li)
-    p "valor da VARIÁVEL"
-    #limite_inferior.each do |limite_inferior|
-      p "LI"
-      p limite_inferior[0]
-    #end
+      if !limite_inferior[0].nil?
+        p "valor da VARIÁVEL"
+        p "LI"
+        p limite_inferior[0]
+      else
+      end
 
     limite_superior = Sensor.where("id = ?", sensor_id).select(:Ls).pluck(:Ls)
-    #limite_superior.each do |limite_superior|
-      p "LS"
-      p limite_superior[0]
-    #end
+      if !limite_superior[0].nil?
+        p "LS"
+        p limite_superior[0]
+      else
+      end
 
     valor_anterior = Leitura.where("sensor_id = ?", sensor_id).select(:valor).last
       if valor_anterior.nil? #= 'nil'
