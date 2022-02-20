@@ -1,14 +1,15 @@
 class Leitura < ApplicationRecord
   belongs_to :sensor
 
-  validates :limite_inferior, :limite_superior, presence: false
-
+  #validates :Li, :Ls, allow_nil: true
 
   before_save :check_status
 
   def check_status
           
     limite_inferior = Sensor.where("id = ?", sensor_id).select(:Li).pluck(:Li)
+    #self.Li = "" if self.Li == nil
+
     p limite_inferior[0]
       if !limite_inferior[0].nil?
         p "valor da VARIÁVEL"

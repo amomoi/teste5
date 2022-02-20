@@ -140,7 +140,7 @@ class LeiturasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def leitura_params
-      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id, :created_at)
+      params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id, :created_at, :Li, :Ls)
     end
 
     def releaseCrossDomain
