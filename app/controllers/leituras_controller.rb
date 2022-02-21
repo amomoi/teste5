@@ -145,6 +145,7 @@ class LeiturasController < ApplicationController
 
     def sensor_params
       params.require(:sensor).permit(:nome_sensor, :Li, :Ls, :cliente_id, :tipo_sensor_id)
+      params.require(:sensor).permit(:Li, Li: [])
     end
 
 
