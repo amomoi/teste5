@@ -128,7 +128,7 @@ class LeiturasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_sensor
-      @sensor = Sensor.where(id: [:sensor_id])#.first
+      @sensor = Sensor.where(id: [:sensor_id]).first
       if @sensor.nil?
         @sensor = Sensor.all
       end
