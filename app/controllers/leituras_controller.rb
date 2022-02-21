@@ -144,7 +144,7 @@ class LeiturasController < ApplicationController
     end
 
     def sensor_params
-      params.require(:sensor).permit(Li:[])
+      params.require(:sensor).permit(sensor_id:[])
     end
 
     def releaseCrossDomain
