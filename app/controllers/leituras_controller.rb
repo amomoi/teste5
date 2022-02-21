@@ -143,6 +143,10 @@ class LeiturasController < ApplicationController
       params.require(:leitura).permit(:valor, :sensor_id, :cliente_id, :tipo_sensor_id, :created_at)
     end
 
+    def sensor_params
+      params.require(:sensor).permit(Li:[])
+    end
+
     def releaseCrossDomain
 
       origin = request.headers["Origin"]
