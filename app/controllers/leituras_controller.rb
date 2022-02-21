@@ -1,5 +1,5 @@
 class LeiturasController < ApplicationController
-  before_action :set_leitura, only: %i[ show edit update destroy ]
+  before_action :set_leitura, only: %i[ show edit update destroy]
   skip_before_action :verify_authenticity_token
   protect_from_forgery with: :exception  
   protect_from_forgery unless: -> { request.format.json? }  
@@ -9,7 +9,7 @@ class LeiturasController < ApplicationController
   # GET /leituras or /leituras.json
   def index
     releaseCrossDomain
-    if @sensor == Sensor.all      
+    if @sensor = Sensor.all      
         @leituras = Leitura.all
     else 
       @leituras = Leitura.where(sensor_id: @sensor.id)
@@ -128,7 +128,7 @@ class LeiturasController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_sensor
-      @sensor = Sensor.where(id: :sensor_id).first
+      @sensor = Sensor.where(id: [:sensor_id])#.first
       if @sensor.nil?
         @sensor = Sensor.all
       end
@@ -144,8 +144,7 @@ class LeiturasController < ApplicationController
     end
 
     def sensor_params
-      params.require(:sensor).permit(:nome_sensor, :Li, :Ls, :cliente_id, :tipo_sensor_id)
-      params.require(:sensor).permit(:id, id: [nil])
+      params.require(:sensor).permit(:id, :sensor_id, :nome_sensor, :Li, :Ls, :cliente_id, :tipo_sensor_id)
     end
 
 

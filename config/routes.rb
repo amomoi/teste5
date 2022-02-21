@@ -16,8 +16,6 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
   get 'home', to: 'home#index'
-  post 'api', to: 'leituras#create'
-  get 'api', to: 'leituras#create'
   get 'sms', to: 'sms#index'
   get '/clientes/:id_cliente/sensors/:id_sensor/ultima_leitura', to: 'leituras#ul'
 
