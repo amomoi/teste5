@@ -9,7 +9,7 @@ class LeiturasController < ApplicationController
   # GET /leituras or /leituras.json
   def index
     releaseCrossDomain
-    if @sensor = Sensor.all      
+    if @sensor == Sensor.all      
         @leituras = Leitura.all
     else 
       @leituras = Leitura.where(sensor_id: @sensor.id)
