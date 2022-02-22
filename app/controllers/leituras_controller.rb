@@ -91,13 +91,14 @@ class LeiturasController < ApplicationController
      p "Enviou SMS para"
      p numero_celular
      p numero_cliente
+     Time.zone = 'Brasilia'
    
       data = {
                 "smss": [
                     {
                         "numero": numero_celular,
                         "idCustom": numero_cliente,
-                        "mensagem": "#{empresa} - #{usuario}: Sensor #{sensor} foi ativado #{Time.now.strftime("%I:%M%p - %d/%m/%Y")}  pois atingiu o limite! Favor verificar!"
+                        "mensagem": "#{empresa} - #{usuario}: Sensor #{sensor} foi ativado #{Time.zone.now.strftime("%I:%M%p - %d/%m/%Y")}  pois atingiu o limite! Favor verificar!"
                     },
                     
                     #// {
