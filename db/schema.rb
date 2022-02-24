@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_210401) do
+ActiveRecord::Schema.define(version: 2022_02_24_202657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_210401) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "celular"
     t.integer "sms"
+    t.string "senha"
     t.index ["cliente_id"], name: "index_usuarios_on_cliente_id"
   end
 
