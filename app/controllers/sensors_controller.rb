@@ -2,6 +2,7 @@ class SensorsController < ApplicationController
   before_action :set_sensor, only: %i[ show edit update destroy]
   before_action :set_cliente
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user!
 
   # GET /sensors or /sensors.json
   def index
