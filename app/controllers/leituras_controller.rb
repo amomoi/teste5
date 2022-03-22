@@ -4,6 +4,7 @@ class LeiturasController < ApplicationController
   protect_from_forgery with: :exception  
   protect_from_forgery unless: -> { request.format.json? }  
   before_action :set_sensor
+  skip_before_action :authenticate_user!
 
 
   # GET /leituras or /leituras.json
