@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :administradors
   resources :statuses
   resources :leituras
   resources :usuarios
@@ -18,5 +19,9 @@ Rails.application.routes.draw do
   get 'home', to: 'home#index'
   get 'sms', to: 'sms#index'
   get '/clientes/:id_cliente/sensors/:id_sensor/ultima_leitura', to: 'leituras#ul'
+  get 'administrators', to: 'administrators#index'
+  get '/login', to: 'login#index'
+  post '/login', to: 'login#logar'
+  get '/sair', to: 'login#deslogar'
 
 end
