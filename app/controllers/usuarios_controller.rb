@@ -6,6 +6,10 @@ class UsuariosController < ApplicationController
   # GET /usuarios or /usuarios.json
   def index
     @usuarios = Usuario.all
+    if @usuarios == Usuario.all      
+    else 
+      @usuarios = Usuario.where(usuario_id: @usuario.id)
+    end
   end
 
   # GET /usuarios/1 or /usuarios/1.json
