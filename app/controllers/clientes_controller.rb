@@ -1,7 +1,6 @@
 class ClientesController < ApplicationController
   before_action :set_cliente, only: %i[ show edit update destroy ]
-  skip_before_action :verify_authenticity_token
-  skip_before_action :authenticate_user!
+ 
 
   # GET /clientes or /clientes.json
   def index
