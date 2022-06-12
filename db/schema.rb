@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_023931) do
+ActiveRecord::Schema.define(version: 2022_06_12_193337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2022_02_25_023931) do
     t.string "nome_empresa"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "site"
   end
 
   create_table "leituras", force: :cascade do |t|
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 2022_02_25_023931) do
     t.datetime "updated_at", precision: 6, null: false
     t.float "Li"
     t.float "Ls"
+    t.integer "time_read"
     t.index ["cliente_id"], name: "index_sensors_on_cliente_id"
     t.index ["tipo_sensor_id"], name: "index_sensors_on_tipo_sensor_id"
   end

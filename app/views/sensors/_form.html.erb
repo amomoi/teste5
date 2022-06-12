@@ -39,6 +39,11 @@
   <%= form.select :tipo_sensor_id, TipoSensor.all.collect {|t| [t.tipo_sensor, t.id]}, include_blank: true %>
 </div>
 
+<div class="field">
+<%= form.label :Time_read %>
+<%= form.text_field :time_read %>
+</div>
+
 <div class="actions">
   <%= form.submit %>
 </div>
