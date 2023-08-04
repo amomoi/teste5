@@ -63,14 +63,14 @@ class Leitura < ApplicationRecord
 
     #LÓGICA PARA SENSORES COM LI
     if flag_mantec = 0
-      if !limite_inferior[0].nil?
-        if valor <= limite_inferior[0] #checa se atingiu o valor limite (superior ou inferior)
+      if !limite_inferior[0].nil? || !limite_superior[0].nil?
+        if valor <= limite_inferior[0] || valor >= limite_superior[0] #checa se atingiu o valor limite (superior ou inferior)
           cliente = Sensor.where("id = ?", sensor_id).select(:cliente_id).pluck(:cliente_id)
           p cliente[0]
           nome_da_empresa = Cliente.where("id = ?", cliente[0]).select(:nome_empresa).pluck(:nome_empresa)
           p sensor.nome_sensor
           celular = Usuario.where("cliente_id = ?", cliente[0]).select(:celular).select(:sms).select(:nome)
-          p celular
+          p celular[0]
           #sms_able = Usuario.where("cliente_id = ?", cliente[0]).select(:sms)
           #p sms_able
           #p "passou 1"
@@ -78,11 +78,18 @@ class Leitura < ApplicationRecord
             if celular.sms == 1
               p "#{nome_da_empresa[0]} - #{celular.nome}: Sensor #{sensor.nome_sensor} foi ativado #{Time.now.strftime("%I:%M%p - %d/%m/%Y")} pois atingiu o limite! Favor verificar!"
               #p "#{nome_da_empresa[0]}: #{celular.nome} - #{sensor.nome_sensor} foi ativado pois atingiu o limite! Favor verificar. Ativou SMS enviando para celular #{celular.celular} e cliente #{cliente[0]} "
-              #p "passou 2"
-              LeiturasController.enviarSMS(celular.celular, cliente[0], nome_da_empresa[0], celular.nome, sensor.nome_sensor)
+              p "Enviou SMS por Leituras Controler"
+              #LeiturasController.enviarSMS(celular.celular, cliente[0], nome_da_empresa[0], celular.nome, sensor.nome_sensor)
             end
           end
+
+        else
+          if flag_rearme.flag_rearme == 1  #checa se retornou fora dos LS e LI, se sim deixa flag_rearme = 0
+            Status.where(sensor_id: sensor_id).update_all(flag_rearme: 0)
+          end
         end
+
+
       else
       end
     else #flag_mantec = 1
