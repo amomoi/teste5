@@ -6,7 +6,9 @@ ruby '3.2.2'
 gem 'rest-client', '~> 2.1.0'
 gem 'net-http'
 gem 'uri'
-gem 'rails', '~> 6.1.7.4' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'rails', '~> 7.0.8.7'
+
+
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1' # Única definição da gem 'pg'
@@ -41,7 +43,7 @@ group :test do
 end
 
 group :production do
-  gem 'puma', '~> 5.0'
+  
 end
 
 

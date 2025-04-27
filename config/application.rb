@@ -1,5 +1,16 @@
 require_relative "boot"
 
+# Corrige incompatibilidade do Logger no Ruby 3.2
+require 'logger'
+
+module ActiveSupport
+  module LoggerThreadSafeLevel
+    Logger = ::Logger
+  end
+end
+
+
+
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
