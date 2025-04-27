@@ -7,7 +7,8 @@ gem 'rest-client', '~> 2.1.0'
 gem 'net-http'
 gem 'uri'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 6.1.7.4'
+
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
