@@ -1,25 +1,12 @@
 require_relative "boot"
 
-# config/application.rb
-
-require_relative 'boot'
-
-require 'rails/all'
-require 'logger' # <-- Adicione esta linha aqui
-
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
-
-module SeuProjeto
-  class Application < Rails::Application
-    ...
+# Corrige incompatibilidade do Logger no Ruby 3.2
+require 'logger'
+module ActiveSupport
+  module LoggerThreadSafeLevel
+    Logger = ::Logger unless const_defined?(:Logger)
   end
 end
-
-
-
-
 
 require "rails/all"
 
