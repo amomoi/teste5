@@ -14,10 +14,11 @@
   "devDependencies": {
     "webpack-dev-server": "^4.0.0"
   },
-  "engines": {
-    "node": "16.x",
-    "yarn": "1.x"
-  },
+ "engines": {
+  "node": "18.x",
+  "yarn": "1.x"
+}
+
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
   "main": "babel.config.js",
   "directories": {
