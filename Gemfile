@@ -8,6 +8,9 @@ gem 'net-http'
 gem 'uri'
 gem 'rails', '~> 7.0.8.7'
 
+gem 'activesupport', '~> 7.0.8.7'
+
+
 
 
 # Use postgresql as the database for Active Record
@@ -16,8 +19,10 @@ gem 'pg', '~> 1.1' # Única definição da gem 'pg'
 # Use Puma como o servidor da aplicação
 gem 'puma', '~> 5.0'
 
+gem 'jsbundling-rails'
+
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 5.0'
 gem 'sass-rails', '>= 6' # Use SCSS para stylesheets
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
